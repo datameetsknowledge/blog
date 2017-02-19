@@ -1,5 +1,5 @@
 library(readxl)
-setwd(dir = "XXXXX") ##set personal directory
+setwd(dir = "XXXXX") ## set personal directory
 
 ### Download data ###
 if(!file.exists("Raw_data")){
@@ -11,27 +11,27 @@ octurl <- "http://data.nsw.gov.au/data/dataset/a97a46fc-2bdd-4b90-ac7f-0cb1e8d7a
 novurl <- "http://data.nsw.gov.au/data/dataset/a97a46fc-2bdd-4b90-ac7f-0cb1e8d7ac3b/resource/d8e32bc9-9561-4971-abd5-21862f50d60d/download/PriceHistoryNov2016.xlsx"
 decurl <- "http://data.nsw.gov.au/data/dataset/a97a46fc-2bdd-4b90-ac7f-0cb1e8d7ac3b/resource/2a7128ae-02fa-40f7-b9de-a75479ebc9e4/download/PriceHistoryDec2016.xlsx"
 
-download.file(augurl,destfile = "./Raw_data2/august.xlsx",method="curl")
-download.file(sepurl,destfile = "./Raw_data2/september.xlsx",method="curl")
-download.file(octurl,destfile = "./Raw_data2/october.xlsx",method="curl")
-download.file(novurl,destfile = "./Raw_data2/november.xlsx",method="curl")
-download.file(decurl,destfile = "./Raw_data2/december.xlsx",method="curl")
+download.file(augurl,destfile = "./Raw_data/august.xlsx",method="curl")
+download.file(sepurl,destfile = "./Raw_data/september.xlsx",method="curl")
+download.file(octurl,destfile = "./Raw_data/october.xlsx",method="curl")
+download.file(novurl,destfile = "./Raw_data/november.xlsx",method="curl")
+download.file(decurl,destfile = "./Raw_data/december.xlsx",method="curl")
 
 ### Reads data and fixes date formatting ###
-Aug16 <- read_excel("./Raw_data2/august.xlsx")
+Aug16 <- read_excel("./Raw_data/august.xlsx")
 Aug16$PriceUpdatedDate <- as.Date(Aug16$PriceUpdatedDate)
 colnames(Aug16)[6]<- "FuelCode" 
 
-Sep16 <- read_excel("./Raw_data2/september.xlsx")
+Sep16 <- read_excel("./Raw_data/september.xlsx")
 Sep16$PriceUpdatedDate <- as.Date(Sep16$PriceUpdatedDate)
 
-Oct16 <- read_excel("./Raw_data2/october.xlsx")
+Oct16 <- read_excel("./Raw_data/october.xlsx")
 Oct16$PriceUpdatedDate <- as.Date(Oct16$PriceUpdatedDate)
 
-Nov16 <- read_excel("./Raw_data2/november.xlsx",skip=1)
+Nov16 <- read_excel("./Raw_data/november.xlsx",skip=1)
 Nov16$PriceUpdatedDate<- as.Date(Nov16$PriceUpdatedDate)
 
-Dec16 <- read_excel("./Raw_data2/december.xlsx",skip=1)
+Dec16 <- read_excel("./Raw_data/december.xlsx",skip=1)
 Dec16$PriceUpdatedDate<- as.Date(Dec16$PriceUpdatedDate)
 
 ### All months data ### 
