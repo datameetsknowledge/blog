@@ -1,5 +1,5 @@
 library(readxl)
-setwd(dir = "/Users/stevenliu/Dropbox/Further Education/Own Projects/Fuel Prices")
+setwd(dir = "XXXXX") ##set personal directory
 
 ### Download data ###
 if(!file.exists("Raw_data")){
